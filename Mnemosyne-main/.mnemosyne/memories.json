@@ -1,0 +1,644 @@
+[
+  {
+    "id": "mem_bug_8333604e",
+    "memory_type": "bug_fix",
+    "title": "Memory leak from unclosed Pillow image handlers",
+    "content": "[BUG FIX] Memory leak from unclosed Pillow image handlers\nFile: utils/image_processor.putils/image_processor.pyy\nRoot Cause: Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.\nFix Applied: : Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)\nTags: utils, memory-leak, pillow\n",
+    "file_path": "utils/image_processor.putils/image_processor.pyy",
+    "metadata": {
+      "id": "mem_bug_8333604e",
+      "file_path": "utils/image_processor.putils/image_processor.pyy",
+      "function_name": null,
+      "title": "Memory leak from unclosed Pillow image handlers",
+      "root_cause": "Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.",
+      "fix_description": ": Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)",
+      "severity": "high",
+      "tags": [
+        "utils",
+        "memory-leak",
+        "pillow"
+      ],
+      "timestamp": "2026-07-10T19:26:58.958247+00:00"
+    },
+    "timestamp": "2026-07-10T19:26:58.958247+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_d2508f28",
+    "memory_type": "bug_fix",
+    "title": "Memory leak from unclosed Pillow image handlers",
+    "content": "[BUG FIX] Memory leak from unclosed Pillow image handlers\nFile: utils/image_processor.putils/image_processor.pyy\nRoot Cause: Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.\nFix Applied: : Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)\nTags: utils, memory-leak, pillow\n",
+    "file_path": "utils/image_processor.putils/image_processor.pyy",
+    "metadata": {
+      "id": "mem_bug_d2508f28",
+      "file_path": "utils/image_processor.putils/image_processor.pyy",
+      "function_name": null,
+      "title": "Memory leak from unclosed Pillow image handlers",
+      "root_cause": "Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.",
+      "fix_description": ": Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)",
+      "severity": "high",
+      "tags": [
+        "utils",
+        "memory-leak",
+        "pillow"
+      ],
+      "timestamp": "2026-07-10T19:27:00.917106+00:00"
+    },
+    "timestamp": "2026-07-10T19:27:00.917106+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_c150cc4a",
+    "memory_type": "bug_fix",
+    "title": "Memory leak from unclosed Pillow image handlers",
+    "content": "[BUG FIX] Memory leak from unclosed Pillow image handlers\nFile: utils/image_processor.putils/image_processor.pyy\nRoot Cause: Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.\nFix Applied: : Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)\nTags: utils, memory-leak, pillow\n",
+    "file_path": "utils/image_processor.putils/image_processor.pyy",
+    "metadata": {
+      "id": "mem_bug_c150cc4a",
+      "file_path": "utils/image_processor.putils/image_processor.pyy",
+      "function_name": null,
+      "title": "Memory leak from unclosed Pillow image handlers",
+      "root_cause": "Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.",
+      "fix_description": ": Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)",
+      "severity": "high",
+      "tags": [
+        "utils",
+        "memory-leak",
+        "pillow"
+      ],
+      "timestamp": "2026-07-10T19:27:04.097797+00:00"
+    },
+    "timestamp": "2026-07-10T19:27:04.097797+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_c30fc445",
+    "memory_type": "bug_fix",
+    "title": "Memory leak from unclosed Pillow image handlers",
+    "content": "[BUG FIX] Memory leak from unclosed Pillow image handlers\nFile: utils/image_processor.putils/image_processor.pyy\nRoot Cause: Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.\nFix Applied: : Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)\nTags: utils, memory-leak, pillow\n",
+    "file_path": "utils/image_processor.putils/image_processor.pyy",
+    "metadata": {
+      "id": "mem_bug_c30fc445",
+      "file_path": "utils/image_processor.putils/image_processor.pyy",
+      "function_name": null,
+      "title": "Memory leak from unclosed Pillow image handlers",
+      "root_cause": "Opening images using Image.open() without enclosing in a with-statement. Pillow holds file pointers in memory, causing RAM usage to inflate under heavy load.",
+      "fix_description": ": Refactored the resizing logic to wrap the Pillow operations inside a context manager: (with Image.open() as img:)",
+      "severity": "high",
+      "tags": [
+        "utils",
+        "memory-leak",
+        "pillow"
+      ],
+      "timestamp": "2026-07-10T19:27:08.117922+00:00"
+    },
+    "timestamp": "2026-07-10T19:27:08.118922+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_21cc753a",
+    "memory_type": "bug_fix",
+    "title": "Missing CSRF validation on POST endpoint",
+    "content": "[BUG FIX] Missing CSRF validation on POST endpoint\nFile: controllers/user_controller.py\nRoot Cause: Exposing /user/reset-password endpoint as a standard POST request without CSRF middleware validation, leaving the application open to Cross-Site Request Forgery (CSRF) attacks.\nFix Applied: Applied the @csrf_protect decorator to the endpoint and verified presence of X-CSRF-Token header.\nTags: security, csrf, auth\n",
+    "file_path": "controllers/user_controller.py",
+    "metadata": {
+      "id": "mem_bug_21cc753a",
+      "file_path": "controllers/user_controller.py",
+      "function_name": null,
+      "title": "Missing CSRF validation on POST endpoint",
+      "root_cause": "Exposing /user/reset-password endpoint as a standard POST request without CSRF middleware validation, leaving the application open to Cross-Site Request Forgery (CSRF) attacks.",
+      "fix_description": "Applied the @csrf_protect decorator to the endpoint and verified presence of X-CSRF-Token header.",
+      "severity": "critical",
+      "tags": [
+        "security",
+        "csrf",
+        "auth"
+      ],
+      "timestamp": "2026-07-10T19:27:45.344343+00:00"
+    },
+    "timestamp": "2026-07-10T19:27:45.344343+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_ad6f202d",
+    "memory_type": "bug_fix",
+    "title": "nfinite API request loop in UserCard component",
+    "content": "[BUG FIX] nfinite API request loop in UserCard component\nFile: frontend/components/UserCard.js\nRoot Cause: Failing to add a dependency array to the useEffect hook. The hook runs on every render, updates state, triggers a re-render, and runs again, flooding the server with requests.\n\nFix Applied:  Added [userId] dependency array to the useEffect hook, ensuring the API is only called when userId actually changes.\nTags: frontend, react, performance\n",
+    "file_path": "frontend/components/UserCard.js",
+    "metadata": {
+      "id": "mem_bug_ad6f202d",
+      "file_path": "frontend/components/UserCard.js",
+      "function_name": null,
+      "title": "nfinite API request loop in UserCard component",
+      "root_cause": "Failing to add a dependency array to the useEffect hook. The hook runs on every render, updates state, triggers a re-render, and runs again, flooding the server with requests.\n",
+      "fix_description": " Added [userId] dependency array to the useEffect hook, ensuring the API is only called when userId actually changes.",
+      "severity": "medium",
+      "tags": [
+        "frontend",
+        "react",
+        "performance"
+      ],
+      "timestamp": "2026-07-10T19:28:41.054227+00:00"
+    },
+    "timestamp": "2026-07-10T19:28:41.054227+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_bug_dd73cf7c",
+    "memory_type": "bug_fix",
+    "title": "nfinite API request loop in UserCard component",
+    "content": "[BUG FIX] nfinite API request loop in UserCard component\nFile: frontend/components/UserCard.js\nRoot Cause: Failing to add a dependency array to the useEffect hook. The hook runs on every render, updates state, triggers a re-render, and runs again, flooding the server with requests.\n\nFix Applied:  Added [userId] dependency array to the useEffect hook, ensuring the API is only called when userId actually changes.\nTags: frontend, react, performance\n",
+    "file_path": "frontend/components/UserCard.js",
+    "metadata": {
+      "id": "mem_bug_dd73cf7c",
+      "file_path": "frontend/components/UserCard.js",
+      "function_name": null,
+      "title": "nfinite API request loop in UserCard component",
+      "root_cause": "Failing to add a dependency array to the useEffect hook. The hook runs on every render, updates state, triggers a re-render, and runs again, flooding the server with requests.\n",
+      "fix_description": " Added [userId] dependency array to the useEffect hook, ensuring the API is only called when userId actually changes.",
+      "severity": "medium",
+      "tags": [
+        "frontend",
+        "react",
+        "performance"
+      ],
+      "timestamp": "2026-07-10T19:28:47.216500+00:00"
+    },
+    "timestamp": "2026-07-10T19:28:47.216500+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_commit_0a27358",
+    "memory_type": "commit",
+    "title": "Commit: Fix D3 graph link stroke colors for light theme visibility",
+    "content": "[COMMIT 0a27358] Fix D3 graph link stroke colors for light theme visibility\nAuthor: Demo User\nFiles Changed: public/app.js\n",
+    "file_path": "public/app.js",
+    "metadata": {
+      "id": "mem_commit_0a27358",
+      "commit_hash": "0a27358b631d3b873c8a61b19f096b9a582dd06b",
+      "author": "Demo User",
+      "summary": "Fix D3 graph link stroke colors for light theme visibility",
+      "files_changed": [
+        "public/app.js"
+      ],
+      "timestamp": "2026-07-10T19:37:54.784379+00:00"
+    },
+    "timestamp": "2026-07-10T19:37:55.122542+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_commit_1a9b4b8",
+    "memory_type": "commit",
+    "title": "Commit: Update style to bright pink light theme with dark text contrast",
+    "content": "[COMMIT 1a9b4b8] Update style to bright pink light theme with dark text contrast\nAuthor: Demo User\nFiles Changed: public/style.css\n",
+    "file_path": "public/style.css",
+    "metadata": {
+      "id": "mem_commit_1a9b4b8",
+      "commit_hash": "1a9b4b85780b03fe52740ce86448762fce0e21fb",
+      "author": "Demo User",
+      "summary": "Update style to bright pink light theme with dark text contrast",
+      "files_changed": [
+        "public/style.css"
+      ],
+      "timestamp": "2026-07-10T19:37:54.855867+00:00"
+    },
+    "timestamp": "2026-07-10T19:38:08.484570+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_commit_49c648a",
+    "memory_type": "commit",
+    "title": "Commit: Remove hackathon references from README",
+    "content": "[COMMIT 49c648a] Remove hackathon references from README\nAuthor: Demo User\nFiles Changed: README.md\n",
+    "file_path": "README.md",
+    "metadata": {
+      "id": "mem_commit_49c648a",
+      "commit_hash": "49c648aafe11fba15df8a2b9d1ba3d196836da01",
+      "author": "Demo User",
+      "summary": "Remove hackathon references from README",
+      "files_changed": [
+        "README.md"
+      ],
+      "timestamp": "2026-07-10T19:37:54.926430+00:00"
+    },
+    "timestamp": "2026-07-10T19:38:09.230215+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_commit_b021970",
+    "memory_type": "commit",
+    "title": "Commit: Rename project to Mnemosyne and integrate light-pink glassmorphic dashboard & security agent",
+    "content": "[COMMIT b021970] Rename project to Mnemosyne and integrate light-pink glassmorphic dashboard & security agent\nAuthor: Demo User\nFiles Changed: .gitignore, .vercelignore, PROJECT_OVERVIEW.md, README.md, anamnesis/__init__.py, anamnesis/cli.py, anamnesis/config.py, anamnesis/git/hooks.py, anamnesis/git/inspector.py, anamnesis/mcp_server.py, anamnesis/memory/client.py, anamnesis/memory/consolidator.py, anamnesis/memory/schemas.py, anamnesis/ui/formatter.py, anamnesis/utils/llm_helper.py, api/index.py, demo/run_demo.py, demo/sample_project/README.md, mnemosyne/__init__.py, mnemosyne/cli.py, mnemosyne/config.py, mnemosyne/git/hooks.py, mnemosyne/git/inspector.py, mnemosyne/mcp_server.py, mnemosyne/memory/client.py, mnemosyne/memory/consolidator.py, mnemosyne/memory/schemas.py, mnemosyne/ui/formatter.py, mnemosyne/utils/llm_helper.py, mnemosyne/utils/security_scanner.py, public/app.js, public/index.html, public/style.css, pyproject.toml, requirements.txt, tests/test_cli.py, tests/test_memory.py, tests/test_security.py, vercel.json\n",
+    "file_path": ".gitignore",
+    "metadata": {
+      "id": "mem_commit_b021970",
+      "commit_hash": "b021970bc9b1ecbb58ab4316e79775e309422393",
+      "author": "Demo User",
+      "summary": "Rename project to Mnemosyne and integrate light-pink glassmorphic dashboard & security agent",
+      "files_changed": [
+        ".gitignore",
+        ".vercelignore",
+        "PROJECT_OVERVIEW.md",
+        "README.md",
+        "anamnesis/__init__.py",
+        "anamnesis/cli.py",
+        "anamnesis/config.py",
+        "anamnesis/git/hooks.py",
+        "anamnesis/git/inspector.py",
+        "anamnesis/mcp_server.py",
+        "anamnesis/memory/client.py",
+        "anamnesis/memory/consolidator.py",
+        "anamnesis/memory/schemas.py",
+        "anamnesis/ui/formatter.py",
+        "anamnesis/utils/llm_helper.py",
+        "api/index.py",
+        "demo/run_demo.py",
+        "demo/sample_project/README.md",
+        "mnemosyne/__init__.py",
+        "mnemosyne/cli.py",
+        "mnemosyne/config.py",
+        "mnemosyne/git/hooks.py",
+        "mnemosyne/git/inspector.py",
+        "mnemosyne/mcp_server.py",
+        "mnemosyne/memory/client.py",
+        "mnemosyne/memory/consolidator.py",
+        "mnemosyne/memory/schemas.py",
+        "mnemosyne/ui/formatter.py",
+        "mnemosyne/utils/llm_helper.py",
+        "mnemosyne/utils/security_scanner.py",
+        "public/app.js",
+        "public/index.html",
+        "public/style.css",
+        "pyproject.toml",
+        "requirements.txt",
+        "tests/test_cli.py",
+        "tests/test_memory.py",
+        "tests/test_security.py",
+        "vercel.json"
+      ],
+      "timestamp": "2026-07-10T19:37:55.037445+00:00"
+    },
+    "timestamp": "2026-07-10T19:38:09.930616+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "mem_commit_7e4677b",
+    "memory_type": "commit",
+    "title": "Commit: Initial commit",
+    "content": "[COMMIT 7e4677b] Initial commit\nAuthor: Demo User\nFiles Changed: .gitignore, PROJECT_OVERVIEW.md, README.md, anamnesis/__init__.py, anamnesis/cli.py, anamnesis/config.py, anamnesis/git/hooks.py, anamnesis/git/inspector.py, anamnesis/mcp_server.py, anamnesis/memory/client.py, anamnesis/memory/consolidator.py, anamnesis/memory/schemas.py, anamnesis/ui/formatter.py, anamnesis/utils/llm_helper.py, demo/run_demo.py, demo/sample_project/README.md, demo/sample_project/services/payment_service.py, demo/sample_project/services/user_service.py, pyproject.toml, requirements.txt, tests/test_cli.py, tests/test_memory.py\n",
+    "file_path": ".gitignore",
+    "metadata": {
+      "id": "mem_commit_7e4677b",
+      "commit_hash": "7e4677b104307204e5ea29c72bd54c242c545a12",
+      "author": "Demo User",
+      "summary": "Initial commit",
+      "files_changed": [
+        ".gitignore",
+        "PROJECT_OVERVIEW.md",
+        "README.md",
+        "anamnesis/__init__.py",
+        "anamnesis/cli.py",
+        "anamnesis/config.py",
+        "anamnesis/git/hooks.py",
+        "anamnesis/git/inspector.py",
+        "anamnesis/mcp_server.py",
+        "anamnesis/memory/client.py",
+        "anamnesis/memory/consolidator.py",
+        "anamnesis/memory/schemas.py",
+        "anamnesis/ui/formatter.py",
+        "anamnesis/utils/llm_helper.py",
+        "demo/run_demo.py",
+        "demo/sample_project/README.md",
+        "demo/sample_project/services/payment_service.py",
+        "demo/sample_project/services/user_service.py",
+        "pyproject.toml",
+        "requirements.txt",
+        "tests/test_cli.py",
+        "tests/test_memory.py"
+      ],
+      "timestamp": "2026-07-10T19:37:55.122542+00:00"
+    },
+    "timestamp": "2026-07-10T19:38:10.642834+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_7cf9122b",
+    "memory_type": "rule",
+    "title": "Use Context Managers for Resources",
+    "content": "[CONSOLIDATED RULE] Use Context Managers for Resources\nDomain: general\nRule: Enclose resource acquisition and usage with `with` statements to ensure they are properly released.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_7cf9122b",
+      "rule_title": "Use Context Managers for Resources",
+      "description": "Enclose resource acquisition and usage with `with` statements to ensure they are properly released.",
+      "domain": "general",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.009359+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.009887+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_0c95abb2",
+    "memory_type": "rule",
+    "title": "Validate All Endpoints",
+    "content": "[CONSOLIDATED RULE] Validate All Endpoints\nDomain: validation\nRule: Apply validation middleware (e.g., CSRF protection) to all endpoint controllers or routes to prevent Cross-Site Request Forgery attacks and other malicious requests.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_0c95abb2",
+      "rule_title": "Validate All Endpoints",
+      "description": "Apply validation middleware (e.g., CSRF protection) to all endpoint controllers or routes to prevent Cross-Site Request Forgery attacks and other malicious requests.",
+      "domain": "validation",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.021974+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.021974+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_2cc34251",
+    "memory_type": "rule",
+    "title": "Use Dependency Arrays in Hooks",
+    "content": "[CONSOLIDATED RULE] Use Dependency Arrays in Hooks\nDomain: concurrency\nRule: Include a dependency array with relevant state variables within hooks like `useEffect` to run the effect only when necessary, preventing unnecessary re-renders and infinite loops.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_2cc34251",
+      "rule_title": "Use Dependency Arrays in Hooks",
+      "description": "Include a dependency array with relevant state variables within hooks like `useEffect` to run the effect only when necessary, preventing unnecessary re-renders and infinite loops.",
+      "domain": "concurrency",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.025974+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.025974+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_1d797f82",
+    "memory_type": "rule",
+    "title": "Verify Session Variables and Headers",
+    "content": "[CONSOLIDATED RULE] Verify Session Variables and Headers\nDomain: security\nRule: Regularly inspect session data and HTTP headers for unexpected changes or unauthorized values to prevent unintended behavior and maintain security best practices.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_1d797f82",
+      "rule_title": "Verify Session Variables and Headers",
+      "description": "Regularly inspect session data and HTTP headers for unexpected changes or unauthorized values to prevent unintended behavior and maintain security best practices.",
+      "domain": "security",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.028970+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.028970+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_41f2fec4",
+    "memory_type": "rule",
+    "title": "Minimize API Calls in Real-time Apps",
+    "content": "[CONSOLIDATED RULE] Minimize API Calls in Real-time Apps\nDomain: api\nRule: Implement caching mechanisms, handle edge cases for frequent updates, and optimize code for efficient database queries to limit unnecessary requests, reducing the strain on APIs and improving performance.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_41f2fec4",
+      "rule_title": "Minimize API Calls in Real-time Apps",
+      "description": "Implement caching mechanisms, handle edge cases for frequent updates, and optimize code for efficient database queries to limit unnecessary requests, reducing the strain on APIs and improving performance.",
+      "domain": "api",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.035276+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.035276+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_96060018",
+    "memory_type": "rule",
+    "title": "Close External Resources on Demand",
+    "content": "[CONSOLIDATED RULE] Close External Resources on Demand\nDomain: general\nRule: Explicitly close external resources or handle their release appropriately when they are no longer needed (e.g., after processing), especially for database connections, file handles, and system-level components to prevent memory leaks.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_96060018",
+      "rule_title": "Close External Resources on Demand",
+      "description": "Explicitly close external resources or handle their release appropriately when they are no longer needed (e.g., after processing), especially for database connections, file handles, and system-level components to prevent memory leaks.",
+      "domain": "general",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T19:58:07.038288+00:00"
+    },
+    "timestamp": "2026-07-10T19:58:07.038288+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_e67d30b3",
+    "memory_type": "rule",
+    "title": "Use Context Managers for File I/O Operations",
+    "content": "[CONSOLIDATED RULE] Use Context Managers for File I/O Operations\nDomain: general\nRule: Always use a 'with' statement to manage file pointers when opening images or other files, ensuring cleanup even in case of exceptions.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_e67d30b3",
+      "rule_title": "Use Context Managers for File I/O Operations",
+      "description": "Always use a 'with' statement to manage file pointers when opening images or other files, ensuring cleanup even in case of exceptions.",
+      "domain": "general",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T20:08:08.175274+00:00"
+    },
+    "timestamp": "2026-07-10T20:08:08.175841+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_af3b2513",
+    "memory_type": "rule",
+    "title": "Validate Requests with CSRF Protection",
+    "content": "[CONSOLIDATED RULE] Validate Requests with CSRF Protection\nDomain: security\nRule: Apply CSRF protection middleware on sensitive endpoints requiring user data, such as POST requests for password resets or updates, and verify the presence of CSRF tokens in headers.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_af3b2513",
+      "rule_title": "Validate Requests with CSRF Protection",
+      "description": "Apply CSRF protection middleware on sensitive endpoints requiring user data, such as POST requests for password resets or updates, and verify the presence of CSRF tokens in headers.",
+      "domain": "security",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T20:08:08.178995+00:00"
+    },
+    "timestamp": "2026-07-10T20:08:08.178995+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_12642768",
+    "memory_type": "rule",
+    "title": "Prevent Infinite API Loops via Dependency Arrays",
+    "content": "[CONSOLIDATED RULE] Prevent Infinite API Loops via Dependency Arrays\nDomain: api\nRule: Always include a dependency array for hooks like useEffect whenever making API calls triggered by hooks. Keep this array up-to-date to avoid unintended API requests upon every UI render.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_12642768",
+      "rule_title": "Prevent Infinite API Loops via Dependency Arrays",
+      "description": "Always include a dependency array for hooks like useEffect whenever making API calls triggered by hooks. Keep this array up-to-date to avoid unintended API requests upon every UI render.",
+      "domain": "api",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T20:08:08.181460+00:00"
+    },
+    "timestamp": "2026-07-10T20:08:08.182019+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_5861fbf1",
+    "memory_type": "rule",
+    "title": "Explicit Error Handling for API Calls and Effects",
+    "content": "[CONSOLIDATED RULE] Explicit Error Handling for API Calls and Effects\nDomain: general\nRule: Use try/catch blocks or error handling functions when performing operations or calling APIs from within useEffect callbacks, ensuring clean-up actions are executed despite potential exceptions.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_5861fbf1",
+      "rule_title": "Explicit Error Handling for API Calls and Effects",
+      "description": "Use try/catch blocks or error handling functions when performing operations or calling APIs from within useEffect callbacks, ensuring clean-up actions are executed despite potential exceptions.",
+      "domain": "general",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T20:08:08.183693+00:00"
+    },
+    "timestamp": "2026-07-10T20:08:08.183693+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_503a7ed2",
+    "memory_type": "rule",
+    "title": "Avoid Global Variable Modifications via Hooks or Contexts",
+    "content": "[CONSOLIDATED RULE] Avoid Global Variable Modifications via Hooks or Contexts\nDomain: general\nRule: Only modify state through setState(), avoid changing global variables directly, and ensure data flows predictably to prevent side effects and bugs related to shared mutable state.\nConfidence: 0.95\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_503a7ed2",
+      "rule_title": "Avoid Global Variable Modifications via Hooks or Contexts",
+      "description": "Only modify state through setState(), avoid changing global variables directly, and ensure data flows predictably to prevent side effects and bugs related to shared mutable state.",
+      "domain": "general",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445",
+        "mem_bug_21cc753a",
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [],
+      "confidence": 0.95,
+      "timestamp": "2026-07-10T20:08:08.187703+00:00"
+    },
+    "timestamp": "2026-07-10T20:08:08.187703+00:00",
+    "active": true,
+    "search_strategy": null
+  }
+]

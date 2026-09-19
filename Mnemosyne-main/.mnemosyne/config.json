@@ -1,0 +1,20 @@
+{
+  "version": "0.1.0",
+  "storage_dir": ".mnemosyne",
+  "hooks_installed": true,
+  "max_context_diffs": 5,
+  "reflection_threshold": 3,
+  "cognee_api_key": null,
+  "cognee_api_url": "https://api.cognee.ai",
+  "llm_provider": "ollama",
+  "llm_api_key": null,
+  "llm_model": "llama3.1:8b",
+  "embedding_model": "nomic-embed-text",
+  "embedding_dimensions": 768,
+  "ollama_base_url": "http://localhost:11434/v1",
+  "use_custom_graph_schema": false,
+  "use_temporal_cognify": false,
+  "use_cloud": false,
+  "post_commit_hook_installed": true,
+  "initialized": true
+}

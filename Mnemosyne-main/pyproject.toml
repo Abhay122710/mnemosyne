@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mnemosyne"
+version = "0.1.0"
+description = "A CLI companion that gives your codebase a long-term memory using Cognee AI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cognee",
+    "typer",
+    "rich",
+    "GitPython",
+    "pydantic",
+    "python-dotenv",
+    "openai",
+]
+
+[project.scripts]
+mnemosyne = "mnemosyne.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]

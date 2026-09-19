@@ -1,0 +1,13 @@
+.venv
+venv
+env
+__pycache__
+.git
+.github
+.pytest_cache
+tests
+demo
+scratch
+.anamnesis
+*.pyc
+pyproject.toml
