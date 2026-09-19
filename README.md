@@ -376,3 +376,6 @@ pytest tests/
 ---
 
 ## 11. License
+
+Licensed under the **MIT License**.
+
