@@ -239,7 +239,7 @@ def get_graph_data():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi import Response
 from api.static_assets import HTML_CONTENT, CSS_CONTENT, JS_CONTENT
 
@@ -253,23 +253,50 @@ def get_index():
         pass
     return HTMLResponse(content=HTML_CONTENT)
 
+@app.get("/styles.css")
 @app.get("/style.css")
 def get_css():
     try:
-        public_css = root_dir / "public" / "style.css"
+        public_css = root_dir / "public" / "styles.css"
+        if not public_css.exists():
+            public_css = root_dir / "public" / "style.css"
         if public_css.exists():
             return Response(content=public_css.read_text(encoding="utf-8"), media_type="text/css")
     except Exception:
         pass
     return Response(content=CSS_CONTENT, media_type="text/css")
 
+@app.get("/main.js")
 @app.get("/app.js")
 def get_js():
     try:
-        public_js = root_dir / "public" / "app.js"
+        public_js = root_dir / "public" / "main.js"
+        if not public_js.exists():
+            public_js = root_dir / "public" / "app.js"
         if public_js.exists():
             return Response(content=public_js.read_text(encoding="utf-8"), media_type="application/javascript")
     except Exception:
         pass
     return Response(content=JS_CONTENT, media_type="application/javascript")
+
+@app.get("/assets/{asset_name:path}")
+def get_asset(asset_name: str):
+    asset_path = root_dir / "public" / "assets" / asset_name
+    if not asset_path.exists():
+        asset_path = root_dir / "assets" / asset_name
+    if asset_path.exists():
+        media_type = "image/webp" if asset_name.endswith(".webp") else "application/octet-stream"
+        return FileResponse(asset_path, media_type=media_type)
+    raise HTTPException(status_code=404, detail="Asset not found")
+
+@app.get("/fonts/{font_name:path}")
+def get_font(font_name: str):
+    font_path = root_dir / "public" / "fonts" / font_name
+    if not font_path.exists():
+        font_path = root_dir / "fonts" / font_name
+    if font_path.exists():
+        media_type = "font/woff2" if font_name.endswith(".woff2") else "application/octet-stream"
+        return FileResponse(font_path, media_type=media_type)
+    raise HTTPException(status_code=404, detail="Font not found")
+
 

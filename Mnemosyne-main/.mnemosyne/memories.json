@@ -640,5 +640,81 @@
     "timestamp": "2026-07-10T20:08:08.187703+00:00",
     "active": true,
     "search_strategy": null
+  },
+  {
+    "id": "rule_2ca94726",
+    "memory_type": "rule",
+    "title": "Always handle None/null returns from external calls",
+    "content": "[CONSOLIDATED RULE] Always handle None/null returns from external calls\nDomain: error-handling\nRule: Check return values for None before accessing fields or methods. Use guard clauses and .get() patterns for dict access.\nObserved in files: utils/image_processor.putils/image_processor.pyy\nConfidence: 0.9\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_2ca94726",
+      "rule_title": "Always handle None/null returns from external calls",
+      "description": "Check return values for None before accessing fields or methods. Use guard clauses and .get() patterns for dict access.",
+      "domain": "error-handling",
+      "origin_memory_ids": [
+        "mem_bug_8333604e",
+        "mem_bug_d2508f28",
+        "mem_bug_c150cc4a",
+        "mem_bug_c30fc445"
+      ],
+      "provenance_files": [
+        "utils/image_processor.putils/image_processor.pyy"
+      ],
+      "confidence": 0.9,
+      "timestamp": "2026-10-19T12:50:44.727823+00:00"
+    },
+    "timestamp": "2026-10-19T12:50:44.731471+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_9eb389c1",
+    "memory_type": "rule",
+    "title": "Validate all external and user-supplied inputs",
+    "content": "[CONSOLIDATED RULE] Validate all external and user-supplied inputs\nDomain: validation\nRule: Sanitize and validate inputs at service boundaries before processing.\nObserved in files: controllers/user_controller.py\nConfidence: 0.73\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_9eb389c1",
+      "rule_title": "Validate all external and user-supplied inputs",
+      "description": "Sanitize and validate inputs at service boundaries before processing.",
+      "domain": "validation",
+      "origin_memory_ids": [
+        "mem_bug_21cc753a"
+      ],
+      "provenance_files": [
+        "controllers/user_controller.py"
+      ],
+      "confidence": 0.73,
+      "timestamp": "2026-10-19T12:50:44.732984+00:00"
+    },
+    "timestamp": "2026-10-19T12:50:44.732984+00:00",
+    "active": true,
+    "search_strategy": null
+  },
+  {
+    "id": "rule_d138160b",
+    "memory_type": "rule",
+    "title": "Validate API responses before accessing nested fields",
+    "content": "[CONSOLIDATED RULE] Validate API responses before accessing nested fields\nDomain: api\nRule: Always check HTTP status codes and use safe .get() chains instead of direct dict access on API responses.\nObserved in files: frontend/components/UserCard.js\nConfidence: 0.81\n",
+    "file_path": null,
+    "metadata": {
+      "id": "rule_d138160b",
+      "rule_title": "Validate API responses before accessing nested fields",
+      "description": "Always check HTTP status codes and use safe .get() chains instead of direct dict access on API responses.",
+      "domain": "api",
+      "origin_memory_ids": [
+        "mem_bug_ad6f202d",
+        "mem_bug_dd73cf7c"
+      ],
+      "provenance_files": [
+        "frontend/components/UserCard.js"
+      ],
+      "confidence": 0.81,
+      "timestamp": "2026-10-19T12:50:44.736245+00:00"
+    },
+    "timestamp": "2026-10-19T12:50:44.736245+00:00",
+    "active": true,
+    "search_strategy": null
   }
 ]

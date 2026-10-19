@@ -1,254 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mnemosyne - Codebase Memory Graph Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mnemosyne — Codebase Memory Graph</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- BubbledotICG-FinePos font via OnlineWebFonts CDN -->
+  <link
+    href="https://db.onlinewebfonts.com/c/8cb707a9b8a73f8a7403336b861c3074?family=BubbledotICG-FinePos"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome 6.5.2 -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- D3.js v7 for Graph Visualizer -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="logo">
-                <span class="logo-icon">🧠</span>
-                <h2>Mnemosyne</h2>
-            </div>
-            <nav class="nav-links">
-                <a href="#" class="nav-item active" data-tab="dashboard">
-                    <span class="icon">📊</span> Dashboard
-                </a>
-                <a href="#" class="nav-item" data-tab="remember">
-                    <span class="icon">💾</span> Remember Bug
-                </a>
-                <a href="#" class="nav-item" data-tab="recall">
-                    <span class="icon">🔍</span> Recall Search
-                </a>
-                <a href="#" class="nav-item" data-tab="rules">
-                    <span class="icon">📜</span> Consolidated Rules
-                </a>
-                <a href="#" class="nav-item" data-tab="security">
-                    <span class="icon">🛡️</span> Security Scan
-                </a>
-                <a href="#" class="nav-item" data-tab="visualizer">
-                    <span class="icon">🕸️</span> Graph Visualizer
-                </a>
-            </nav>
-            <div class="status-indicator">
-                <span class="pulse-dot" id="system-pulse"></span>
-                <span class="status-text" id="system-status">Checking backend...</span>
-            </div>
-        </aside>
+  <!-- Full-viewport cover video -->
+  <div class="bg">
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
 
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- TAB: Dashboard -->
-            <section id="dashboard" class="tab-content active">
-                <div class="tab-header">
-                    <h1>Memory Statistics</h1>
-                    <p>Live health and statistics of the codebase memory graph</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <span class="stat-icon">🕸️</span>
-                        <div class="stat-info">
-                            <span class="stat-num" id="stat-total-nodes">0</span>
-                            <span class="stat-label">Total Graph Nodes</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-icon">🪲</span>
-                        <div class="stat-info">
-                            <span class="stat-num" id="stat-bug-fixes">0</span>
-                            <span class="stat-label">Bug Fix Memories</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-icon">📜</span>
-                        <div class="stat-info">
-                            <span class="stat-num" id="stat-rules">0</span>
-                            <span class="stat-label">Consolidated Rules</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-icon">💾</span>
-                        <div class="stat-info">
-                            <span class="stat-num" id="stat-commits">0</span>
-                            <span class="stat-label">Commit Memories</span>
-                        </div>
-                    </div>
-                </div>
+  <div class="page">
+    <!-- 1) Header -->
+    <header class="header">
+      <button class="logo-btn" aria-label="Return to Home" data-tab="home">
+        <img src="assets/logo.webp" alt="Mnemosyne Logo" width="52" height="52" />
+      </button>
 
-                <div class="dashboard-details grid-2">
-                    <div class="info-card">
-                        <h3>🤖 AI Engine Capabilities</h3>
-                        <ul class="capability-list">
-                            <li><span class="check">✓</span> <strong>remember()</strong>: Ingests commit history & manual bugs into structured CodeKnowledgeGraph.</li>
-                            <li><span class="check">✓</span> <strong>recall()</strong>: Traverses relational nodes using hybrid vector + graph strategy.</li>
-                            <li><span class="check">✓</span> <strong>memify()</strong>: Clusters recurring bug fixes into generalized team rules.</li>
-                            <li><span class="check">✓</span> <strong>forget()</strong>: Prunes stale connections and removes decayed nodes.</li>
-                        </ul>
-                    </div>
-                    <div class="info-card">
-                        <h3>🛡️ Connection Status</h3>
-                        <div class="status-details">
-                            <div class="status-row">
-                                <span>Cognee DB Engine</span>
-                                <span class="status-badge" id="status-cognee">Offline</span>
-                            </div>
-                            <div class="status-row">
-                                <span>Cloud LLM Backend</span>
-                                <span class="status-badge" id="status-llm">Offline</span>
-                            </div>
-                            <div class="status-row">
-                                <span>Local Fallback Mode</span>
-                                <span class="status-badge" id="status-fallback">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <nav class="nav-pill" aria-label="Main Navigation">
+        <button class="nav-link active" data-tab="home">Home</button>
+        <button class="nav-link" data-tab="dashboard">Dashboard</button>
+        <button class="nav-link" data-tab="remember">Remember Bug</button>
+        <button class="nav-link" data-tab="recall">Recall Search</button>
+        <button class="nav-link" data-tab="rules">Rules</button>
+        <button class="nav-link" data-tab="security">Security</button>
+        <button class="nav-link" data-tab="visualizer">Visualizer</button>
+      </nav>
 
-            <!-- TAB: Remember Bug -->
-            <section id="remember" class="tab-content">
-                <div class="tab-header">
-                    <h1>Log a Bug Fix</h1>
-                    <p>Add a new bug pattern to the codebase memory graph</p>
-                </div>
-                <div class="card form-container">
-                    <form id="bug-form">
-                        <div class="form-group">
-                            <label for="file_path">Affected File Path</label>
-                            <input type="text" id="file_path" placeholder="e.g. services/user_service.py" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Bug Summary / Title</label>
-                            <input type="text" id="title" placeholder="e.g. NullPointerException on empty API result" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="root_cause">Root Cause Description</label>
-                            <textarea id="root_cause" rows="3" placeholder="Why did the bug happen? (e.g. Missing check for response.status_code == 204)" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="fix_description">Fix Applied</label>
-                            <textarea id="fix_description" rows="3" placeholder="How was it fixed? (e.g. Added guard clause and defensive dictionary .get() access)" required></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="severity">Severity</label>
-                                <select id="severity">
-                                    <option value="low">Low</option>
-                                    <option value="medium" selected>Medium</option>
-                                    <option value="high">High</option>
-                                    <option value="critical">Critical</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tags">Tags (comma-separated)</label>
-                                <input type="text" id="tags" placeholder="e.g. null-check, api, user-service">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn primary-btn">Ingest into Graph Memory</button>
-                    </form>
-                    <div id="bug-result" class="alert-box hide"></div>
-                </div>
-            </section>
+      <button class="sign-in-btn" id="header-status-btn" title="View System Status" data-tab="dashboard">
+        <span class="status-pulse-dot" id="system-pulse-dot"></span>
+        <span id="system-status-text">Cognee Active</span>
+      </button>
 
-            <!-- TAB: Recall Search -->
-            <section id="recall" class="tab-content">
-                <div class="tab-header">
-                    <h1>Recall Search</h1>
-                    <p>Query codebase memory graph in natural language using semantic & graph search</p>
-                </div>
-                <div class="search-container">
-                    <div class="search-bar card">
-                        <input type="text" id="search-query" placeholder="Ask codebase memory (e.g., 'null check user API response' or 'sql injection risk')...">
-                        <input type="text" id="search-context" placeholder="File context (optional)...">
-                        <button id="btn-search" class="btn primary-btn">Search Memory</button>
-                    </div>
-                </div>
-                <div class="results-container">
-                    <h3>🔍 Recall Search Results</h3>
-                    <div id="search-results-list" class="results-list">
-                        <p class="placeholder-text">Enter a query to search codebase memory...</p>
-                    </div>
-                </div>
-            </section>
+      <button class="burger-btn" aria-label="Toggle navigation" aria-expanded="false" id="burger-btn">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
+    </header>
 
-            <!-- TAB: Consolidated Rules -->
-            <section id="rules" class="tab-content">
-                <div class="tab-header">
-                    <h1>Discovered Coding Rules</h1>
-                    <p>Rules consolidated by the Cognee memify() pipeline from recurring bug fixes</p>
-                    <button id="btn-reflect" class="btn secondary-btn" style="margin-top: 15px;">Reflect & Generalize Rules</button>
-                </div>
-                <div class="card">
-                    <table class="rules-table">
-                        <thead>
-                            <tr>
-                                <th>Convention / Title</th>
-                                <th>Actionable Guideline</th>
-                                <th>Domain</th>
-                                <th>Confidence</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rules-tbody">
-                            <tr>
-                                <td colspan="4" class="placeholder-text">No rules consolidated yet. Click "Reflect & Generalize Rules" or add more bug fixes to trigger consolidation.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- TAB: Security Scan -->
-            <section id="security" class="tab-content">
-                <div class="tab-header">
-                    <h1>Security Scanning Agent</h1>
-                    <p>Scans staged git diffs or file contents for credentials, SQL injection, and vulnerabilities using past memory context</p>
-                </div>
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>Scan Staged Git Diff</h3>
-                        <p class="description">Scan all currently staged git modifications.</p>
-                        <textarea id="security-diff" rows="10" placeholder="Paste your git diff patch here..."></textarea>
-                        <button id="btn-scan-diff" class="btn primary-btn" style="margin-top: 15px;">Scan Staged Diff</button>
-                    </div>
-                    <div class="card">
-                        <h3>Scan Specific File</h3>
-                        <p class="description">Scan a specific file by its relative path inside the repository.</p>
-                        <input type="text" id="security-file-path" placeholder="e.g. services/user_service.py" style="margin-top: 10px; margin-bottom: 15px; width: 100%;">
-                        <button id="btn-scan-file" class="btn secondary-btn">Scan Code File</button>
-                    </div>
-                </div>
-                <div class="security-results-container card hide" id="security-results-panel">
-                    <h3>🛡️ Security Vulnerabilities Detected</h3>
-                    <div id="security-issues-list" class="issues-list"></div>
-                </div>
-            </section>
-
-            <!-- TAB: Visualizer -->
-            <section id="visualizer" class="tab-content visualizer-tab">
-                <div class="tab-header">
-                    <h1>Interactive Memory Graph</h1>
-                    <p>Visualizing files, bug fixes, consolidated rules, and relations</p>
-                </div>
-                <div class="visualizer-container card">
-                    <svg id="graph-svg" width="100%" height="550"></svg>
-                    <!-- Detail Side Drawer -->
-                    <div id="drawer" class="drawer hide">
-                        <div class="drawer-header">
-                            <h3 id="drawer-title">Node Details</h3>
-                            <button id="drawer-close" class="close-btn">&times;</button>
-                        </div>
-                        <div class="drawer-body" id="drawer-content"></div>
-                    </div>
-                </div>
-            </section>
-        </main>
+    <!-- Mobile Menu Overlay & Sheet -->
+    <div class="mobile-overlay" id="mobile-overlay" hidden></div>
+    <div class="mobile-sheet" id="mobile-sheet" hidden aria-label="Mobile Navigation">
+      <button class="mobile-link active" data-tab="home">Home</button>
+      <button class="mobile-link" data-tab="dashboard">📊 Dashboard</button>
+      <button class="mobile-link" data-tab="remember">💾 Remember Bug</button>
+      <button class="mobile-link" data-tab="recall">🔍 Recall Search</button>
+      <button class="mobile-link" data-tab="rules">📜 Consolidated Rules</button>
+      <button class="mobile-link" data-tab="security">🛡️ Security Scan</button>
+      <button class="mobile-link" data-tab="visualizer">🕸️ Graph Visualizer</button>
+      <div class="mobile-status-row">
+        <span class="status-pulse-dot" id="mobile-pulse-dot"></span>
+        <span id="mobile-status-text">Cognee Cloud Active</span>
+      </div>
     </div>
-    <script src="app.js"></script>
+
+    <!-- =========================================================
+         Main Viewport: All Sections seamlessly styled like Pic 2
+         ========================================================= -->
+    <main class="main-viewport">
+      <!-- -------------------------------------------------------
+           VIEW 0: Home Hero (Main Overview)
+           ------------------------------------------------------- -->
+      <section class="page-view active hero" id="view-home">
+        <!-- Project Stack Pill -->
+        <div class="trust-row anim" style="--d: 0.05s">
+          <div class="tech-stack-badges">
+            <div class="tech-badge" title="Cognee AI Memory Engine">
+              <div class="inner-circle"><i class="fa-solid fa-brain"></i></div>
+            </div>
+            <div class="tech-badge" title="Git Commit & History Ingestion">
+              <div class="inner-circle"><i class="fa-brands fa-git-alt"></i></div>
+            </div>
+            <div class="tech-badge" title="Python 3.10+ Native Engine">
+              <div class="inner-circle"><i class="fa-brands fa-python"></i></div>
+            </div>
+          </div>
+          <div class="trust-pill" id="hero-status-pill">
+            <span class="status-pulse-dot" id="hero-pulse-dot"></span>
+            <span id="hero-status-text">Codebase Memory Graph</span>
+          </div>
+        </div>
+
+        <!-- Headline in dot-matrix font -->
+        <h1 class="headline anim">
+          <span class="headline-line headline-line-1">Mnemosyne</span>
+          <span class="headline-line headline-line-2">Codebase Memory Graph</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="subhead anim" style="--d: 0.28s">
+          Persistent memory for engineering teams. Ingests git commits, recalls bug fixes,<br />synthesizes team rules with Cognee AI, and guards against code regressions.
+        </p>
+
+        <!-- CTA -->
+        <button class="cta-btn" id="hero-get-started-btn" style="--d: 0.4s" data-tab="dashboard">
+          <span>Explore Memory Graph</span>
+        </button>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 1: Dashboard (Live Telemetry & Graph Health)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-dashboard">
+        <div class="view-header-block">
+          <h2 class="view-title">Memory Statistics & Graph Health</h2>
+          <p class="view-subtitle">Real-time graph telemetry, active memory nodes, and AI reasoning engine state</p>
+        </div>
+
+        <div class="dashboard-grid-container">
+          <div class="dashboard-stats-grid">
+            <div class="glass-stat-card">
+              <span class="card-icon">🕸️</span>
+              <div class="card-body">
+                <span class="card-number" id="dash-total-nodes">0</span>
+                <span class="card-label">Total Graph Nodes</span>
+              </div>
+            </div>
+            <div class="glass-stat-card">
+              <span class="card-icon">🪲</span>
+              <div class="card-body">
+                <span class="card-number" id="dash-bug-fixes">0</span>
+                <span class="card-label">Bug Fix Memories</span>
+              </div>
+            </div>
+            <div class="glass-stat-card">
+              <span class="card-icon">📜</span>
+              <div class="card-body">
+                <span class="card-number" id="dash-rules">0</span>
+                <span class="card-label">Consolidated Rules</span>
+              </div>
+            </div>
+            <div class="glass-stat-card">
+              <span class="card-icon">💾</span>
+              <div class="card-body">
+                <span class="card-number" id="dash-commits">0</span>
+                <span class="card-label">Commit Memories</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-details-row">
+            <div class="glass-detail-box">
+              <h4>🤖 AI Engine Reasoning Capabilities</h4>
+              <ul class="capability-list">
+                <li><span class="chk">✓</span> <strong>remember()</strong>: Ingests commit history & manual bugs into structured CodeKnowledgeGraph.</li>
+                <li><span class="chk">✓</span> <strong>recall()</strong>: Traverses relational nodes using hybrid vector + graph search.</li>
+                <li><span class="chk">✓</span> <strong>memify()</strong>: Clusters recurring bug fixes into generalized team rules.</li>
+                <li><span class="chk">✓</span> <strong>forget()</strong>: Prunes stale connections and removes decayed nodes.</li>
+              </ul>
+            </div>
+
+            <div class="glass-detail-box">
+              <h4>🛡️ Core Connection Status</h4>
+              <div class="status-rows">
+                <div class="status-row-item">
+                  <span>Cognee Graph Engine</span>
+                  <span class="badge" id="badge-cognee">Checking...</span>
+                </div>
+                <div class="status-row-item">
+                  <span>LLM Embedding Engine</span>
+                  <span class="badge" id="badge-llm">Checking...</span>
+                </div>
+                <div class="status-row-item">
+                  <span>Local Offline Fallback</span>
+                  <span class="badge" id="badge-fallback">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 2: Remember Bug (Ingest Memory)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-remember">
+        <div class="view-header-block">
+          <h2 class="view-title">Ingest Bug Fix Memory</h2>
+          <p class="view-subtitle">Teach Mnemosyne about historical bugs and root causes to prevent future regressions</p>
+        </div>
+
+        <form class="glass-form" id="bug-ingest-form">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="bug-file-path">File Path <span class="req">*</span></label>
+              <input type="text" id="bug-file-path" placeholder="e.g., utils/image_processor.py" required />
+            </div>
+            <div class="form-group">
+              <label for="bug-title">Bug Summary / Title <span class="req">*</span></label>
+              <input type="text" id="bug-title" placeholder="e.g., Memory leak in thumbnail batch processing" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bug-root-cause">Root Cause Analysis <span class="req">*</span></label>
+            <textarea id="bug-root-cause" rows="2" placeholder="Describe the underlying technical mechanism that triggered the issue..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="bug-fix-desc">Fix Description & Patterns Applied <span class="req">*</span></label>
+            <textarea id="bug-fix-desc" rows="2" placeholder="Describe the solution applied, architectural fixes, or refactoring..." required></textarea>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="bug-severity">Severity Level</label>
+              <select id="bug-severity">
+                <option value="low">Low - Minor cosmetic or non-blocking</option>
+                <option value="medium" selected>Medium - Functional defect with workaround</option>
+                <option value="high">High - System disruption or critical feature broken</option>
+                <option value="critical">Critical - Crash, data loss or security vulnerability</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bug-tags">Tags (Comma-separated)</label>
+              <input type="text" id="bug-tags" placeholder="memory, leak, threading, pil" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="cta-btn small-btn" id="btn-submit-bug">
+              <span>💾 Ingest into Memory Graph</span>
+            </button>
+            <div class="form-message" id="bug-form-message"></div>
+          </div>
+        </form>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 3: Recall Search (Hybrid Traversal)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-recall">
+        <div class="view-header-block">
+          <h2 class="view-title">Recall Search</h2>
+          <p class="view-subtitle">Query codebase memory using hybrid semantic embeddings + knowledge graph traversal</p>
+        </div>
+
+        <div class="search-panel-wrapper">
+          <div class="search-bar-row">
+            <div class="search-input-wrapper">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="recall-query" placeholder="Search memories, bugs, architectural lessons (e.g. 'memory leak')..." />
+            </div>
+            <div class="context-input-wrapper">
+              <input type="text" id="recall-context" placeholder="File context filter (optional)" />
+            </div>
+            <button class="cta-btn small-btn" id="btn-run-recall">Search</button>
+          </div>
+
+          <div class="search-results-container" id="recall-results-list">
+            <p class="empty-state-text">Type a query above to traverse the codebase knowledge graph.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 4: Consolidated Rules (Synthesized Team Knowledge)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-rules">
+        <div class="view-header-block flex-header">
+          <div>
+            <h2 class="view-title" style="text-align: left;">Consolidated Architectural Rules</h2>
+            <p class="view-subtitle" style="text-align: left; margin-bottom: 0;">Team rules synthesized by AI reflection clustering across recurring bug patterns</p>
+          </div>
+          <button class="cta-btn small-btn" id="btn-reflect-rules">
+            <span>✨ Reflect & Generalize Rules</span>
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table class="glass-table">
+            <thead>
+              <tr>
+                <th style="width: 26%;">Rule Title</th>
+                <th style="width: 48%;">Synthesized Guidance</th>
+                <th style="width: 13%;">Domain</th>
+                <th style="width: 13%;">Confidence</th>
+              </tr>
+            </thead>
+            <tbody id="rules-table-body">
+              <tr>
+                <td colspan="4" class="empty-state-text">Loading consolidated rules...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 5: Security Scan (Diff & Anti-Pattern Audit)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-security">
+        <div class="view-header-block">
+          <h2 class="view-title">Security & Anti-Pattern Scanner</h2>
+          <p class="view-subtitle">Scans code diffs or local files against historical bug rules and vulnerability patterns</p>
+        </div>
+
+        <div class="scan-panel-wrapper">
+          <div class="scan-input-section">
+            <div class="scan-mode-row">
+              <label for="security-diff-input">Code Diff to Inspect</label>
+              <button type="button" class="text-action-link" id="btn-prefill-diff">Prefill Sample Vulnerability</button>
+            </div>
+            <textarea id="security-diff-input" rows="4" placeholder="Paste git diff here (+ file = open(...) without context manager)..."></textarea>
+
+            <div class="scan-file-row">
+              <input type="text" id="security-file-input" placeholder="Or enter local file path (e.g. api/index.py)" />
+              <button class="cta-btn small-btn" id="btn-run-scan">Run Security Scan</button>
+            </div>
+          </div>
+
+          <div class="scan-results-container" id="security-results-panel">
+            <h4 class="findings-heading">Vulnerability Findings</h4>
+            <div class="issues-list" id="security-issues-list">
+              <p class="empty-state-text">Paste a diff or specify a file to run the security scanning agent.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- -------------------------------------------------------
+           VIEW 6: Graph Visualizer (D3 Interactive Network)
+           ------------------------------------------------------- -->
+      <section class="page-view" id="view-visualizer">
+        <div class="view-header-block flex-header">
+          <div>
+            <h2 class="view-title" style="text-align: left;">Knowledge Graph Visualizer</h2>
+            <p class="view-subtitle" style="text-align: left; margin-bottom: 0;">Interactive relations between tenants, files, bugs, commits, and rules</p>
+          </div>
+          <div class="graph-legend">
+            <span class="legend-item"><span class="legend-dot tenant"></span>Tenant</span>
+            <span class="legend-item"><span class="legend-dot file"></span>File</span>
+            <span class="legend-item"><span class="legend-dot bug"></span>Bug</span>
+            <span class="legend-item"><span class="legend-dot rule"></span>Rule</span>
+            <span class="legend-item"><span class="legend-dot commit"></span>Commit</span>
+          </div>
+        </div>
+
+        <div class="visualizer-wrapper">
+          <svg id="graph-svg" class="graph-canvas"></svg>
+
+          <!-- Slide-out Node Inspector Drawer -->
+          <div class="node-inspector-drawer hide" id="node-drawer">
+            <div class="drawer-header">
+              <h4 id="drawer-node-title">Node Metadata</h4>
+              <button class="drawer-close-btn" id="drawer-close-btn">✕</button>
+            </div>
+            <div class="drawer-body" id="drawer-node-content">
+              <p class="empty-state-text">Click on any node in the graph to view relational properties.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 3) Stats Footer (4 Metrics Synced with Live Graph Telemetry) -->
+    <footer class="stats-footer">
+      <div class="stat-item anim" style="--d: 0.5s">
+        <div class="stat-glyph">&lt;</div>
+        <div class="stat-value" id="stat-total-nodes-val" data-target="40" data-suffix="" data-decimals="0" data-index="0">40</div>
+        <div class="stat-label">Total Graph Nodes</div>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.58s">
+        <div class="stat-glyph">%</div>
+        <div class="stat-value" id="stat-bug-fixes-val" data-target="7" data-suffix="" data-decimals="0" data-index="1">7</div>
+        <div class="stat-label">Bug Fix Memories</div>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.66s">
+        <div class="stat-glyph">*</div>
+        <div class="stat-value" id="stat-rules-val" data-target="14" data-suffix="" data-decimals="0" data-index="2">14</div>
+        <div class="stat-label">Consolidated Rules</div>
+      </div>
+
+      <div class="stat-item anim" style="--d: 0.74s">
+        <div class="stat-glyph">#</div>
+        <div class="stat-value" id="stat-commits-val" data-target="5" data-suffix="" data-decimals="0" data-index="3">5</div>
+        <div class="stat-label">Commit Memories</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
